@@ -22,7 +22,7 @@ fn main() {
 
 }
 
-fn new_rask(args: &[String]) {
+fn new_task(args: &[String]) {
     if args.len() < 1 {
         println!("new: missing <title>");
         help();

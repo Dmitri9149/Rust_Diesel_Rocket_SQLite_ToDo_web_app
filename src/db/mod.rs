@@ -6,11 +6,11 @@ pub mod schema;
 pub fn establish_connection() -> SqliteConnection {
     let db = "./testdb.sqlite3";
     SqliteConnection::establish(db)
-        .unwrap_or_else(|_| pamic!("Error connecting to {}", db))
+        .unwrap_or_else(|_| panic!("Error connecting to {}", db))
 }
 
 pub fn create_task(connection: &SqliteConnection, title: &str) {
-    models::NewTask {title};
+    let task = models::NewTask {title};
 
     diesel::insert_into(schema::task::table)
         .values(&task)
