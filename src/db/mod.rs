@@ -18,3 +18,21 @@ pub fn create_task(connection: &SqliteConnection, title: &str) {
         .expect("Error inserting new task");
 
 }
+
+fn show_tasks(args: &[String]) {
+    if args.len()  > 0 {
+        println!("show: unexpected argument");
+        help();
+        return;
+    }
+    let conn = establish_conection();
+    println!("TASKS\n--------");
+    for task in query_task(&conn) {
+        println!("{}", task.title);
+    }
+}
+
+
+
+
+
