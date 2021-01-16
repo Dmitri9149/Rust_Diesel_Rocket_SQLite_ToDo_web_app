@@ -5,8 +5,8 @@ fn help() {
     println!("subcommands:");
     println!("   new<title>: create new task");
     println!("   show: get the list of all tasks");
-    println!("   delete: delete 'tasks' by stating 'like name of task string'; be carefull!\n")
-    println!("   'learn C' and 'learn Rust' will both deleted by pattern 'learn'")
+    println!("   delete: delete 'tasks' by stating 'like name of task string'; be carefull!\n");
+    println!("   'learn C' and 'learn Rust' will both deleted by pattern 'learn'");
 }
 
 fn main() {
