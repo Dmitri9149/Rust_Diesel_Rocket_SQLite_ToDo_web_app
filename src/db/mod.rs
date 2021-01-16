@@ -31,6 +31,7 @@ pub fn query_task(connection: &SqliteConnection) -> Vec<models::Task> {
 }
 
 pub fn delete(connection: &SqliteConnection, pattern: &str) {
+        let tasks = schema::task::table
         let num_deleted = diesel::delete(tasks.filter(title.like(pattern)))
         .execute(&connection)
         .expect("Error deleting posts");
