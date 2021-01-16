@@ -15,7 +15,7 @@ fn main() {
         return;
     }
 
-    println!("arg[0]", &args[0]);
+    println!("arg[0]-> {}; args[1] -> {}", &args[0], &args[1]);
 
     let subcommand = &args[1];
     match subcommand.as_ref() {
