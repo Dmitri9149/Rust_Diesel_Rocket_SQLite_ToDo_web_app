@@ -34,7 +34,7 @@ fn new_task(args: &[String]) {
     }
 
     let conn = establish_connection();
-    create_task(&conn, &args[0], "pending".to_string());
+    create_task(&conn, &args[0], "pending");
 
 }
 
