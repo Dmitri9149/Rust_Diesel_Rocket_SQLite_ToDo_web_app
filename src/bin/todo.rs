@@ -83,7 +83,7 @@ fn done(args: &[String])  {
 
     let conn = establish_connection();
     let id = &args[0].parse::<i32>().expect("Invalid ID");
-    println!("This is {id}", id);
+    println!("This is {}", id);
 }
 
 
