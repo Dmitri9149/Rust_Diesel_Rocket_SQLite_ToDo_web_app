@@ -64,7 +64,8 @@ fn delete_task(args: &[String]) {
     }
 
     let conn = esteblish_connection();
-    let num_deleted = delete(&conn, &args[0]);
+    let pattern = format!("%{}%", &args[0]);
+    let num_deleted = delete(&conn, &pattern);
 
     println!("Deleted {} posts", num_deleted);
 
