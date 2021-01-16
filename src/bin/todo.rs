@@ -2,14 +2,13 @@ use std::env;
 use mytodo::db::{create_task, query_task, establish_connection, delete_by_title};
 
 fn help() {
-    println!("subcommands:");
-    println!("");
-    println!("new<title>: create new task");
-    println!("show: get the list of all tasks");
-    println!("delete: delete 'tasks' by stating 'like name of task string'; be carefull!\n");
-    println!("'learn C' and 'learn C++' will both deleted by pattern 'learn C'");
-    println!("done: mark a task as 'done', it is need to know the id of the task\n");
-    println!("that is why it is recommended to use 'show' first to gut the id");
+    println!("subcommands:\n");
+    println!("new<title>: create new task\n");
+    println!("show: get the list of all tasks\n");
+    println!("delete: delete 'tasks' by stating 'task like string'; be carefull!");
+    println!("'learn C' and 'learn C++' will both deleted by pattern 'learn C'\n");
+    println!("done: mark a task as 'done', it requires to know the id of the task");
+    println!("that is why it is recommended to use 'show' first to get the id");
 }
 
 fn main() {
@@ -27,6 +26,7 @@ fn main() {
         "new" => new_task(&args[2..]),
         "show" => show_tasks(&args[2..]),
         "delete" => delete_task(&args[2..]),
+        "done" => done(&args[2..]),
         _ => help(),
     }
 
