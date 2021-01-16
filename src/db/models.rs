@@ -5,6 +5,7 @@ use super::schema::task;
 
 pub struct NewTask<'a> {
     pub title: &'a str,
+    pub done: &'a str,
 }
 
 #[derive(Queryable)]
