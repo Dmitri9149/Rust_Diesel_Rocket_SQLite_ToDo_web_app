@@ -1,12 +1,17 @@
 use diesel::{prelude::*, sqlite::SqliteConnection};
+use dotenv::dotenv;
+use std::env;
 
 pub mod models;
 pub mod schema;
 
 pub fn establish_connection() -> SqliteConnection {
-    let db = "./testdb.sqlite3";
-    SqliteConnection::establish(db)
-        .unwrap_or_else(|_| panic!("Error connecting to {}", db))
+    dotenv().ok();
+/*    let db = "./testdb.sqlite3";   */
+    let database_url = env::var("DATABASE_URL")
+        .expect("DATABASE_URL must be set");
+    SqliteConnection::establish(&database_url)
+        .unwrap_or_else(|_| panic!("Error connecting to {}", database_url))
 }
 
 pub fn create_task(connection: &SqliteConnection, title: &str, done: &str) {
