@@ -63,7 +63,7 @@ fn delete_task(args: &[String]) {
         return;
     }
 
-    let conn = esteblish_connection();
+    let conn = establish_connection();
     let pattern = format!("%{}%", &args[0]);
     let num_deleted = delete_by_title(&conn, &pattern);
 
