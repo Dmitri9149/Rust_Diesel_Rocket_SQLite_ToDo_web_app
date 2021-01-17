@@ -44,7 +44,6 @@ use crate::db::schema::task::title;
 
 pub fn update_by_id(connection: &SqliteConnection, id: &i32) {
 use crate::db::schema::task::done;
-use crate::db::models::Task;
 
     let tasks = schema::task::table;
     let value = "done".to_string();
@@ -58,7 +57,7 @@ use crate::db::models::Task;
         .first(connection)
         .unwrap_or_else(|_| panic!("Unable to find task {}", id));
 
-    println!("Published post {}", task.title);  
+    println!("The task ''{}' is marked as 'done'", task.title);  
 
 }
 
