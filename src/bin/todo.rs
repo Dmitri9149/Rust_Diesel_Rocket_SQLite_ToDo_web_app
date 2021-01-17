@@ -86,7 +86,7 @@ fn done(args: &[String])  {
     println!("This is {}", id);
 
     let _ = update_by_id(&conn, &id);
-    println!("The task with the id {} was updated", id);
+    println!("The task with the id {} was marked as 'done'", id);
 
 }
 
