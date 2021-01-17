@@ -45,11 +45,25 @@ use crate::db::schema::task::title;
 pub fn update_by_id(connection: &SqliteConnection, id: &i32) {
 use crate::db::schema::task::done;
 use crate::db::models::Task;
+
     let tasks = schema::task::table;
     let value = "done".to_string();
-    let task_update=diesel::update(tasks.find(id))
+    let _=diesel::update(tasks.find(id))
         .set(done.eq(value))
-        .get_result::<Task>(connection)
-        .expect(&format!("Unable to find task {}", id));
-    println!("From DB layer: updated post {}", id);
+        .execute(connection)
+        .unwrap();
+
+    let task: models::Task = tasks
+        .find(id)
+        .first(connection)
+        .unwrap_or_else(|_| panic!("Unable to find task {}", id));
+
+    println!("Published post {}", task.title);  
+
 }
+
+
+
+
+
+
