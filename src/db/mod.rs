@@ -41,3 +41,28 @@ use crate::db::schema::task::title;
         .expect("Error deleting posts");
         return num_deleted;
 }
+
+pub fn update_by_id(connection: &SqliteConnection, id: &i32) {
+use crate::db::schema::task::done;
+
+    let tasks = schema::task::table;
+    let value = "done".to_string();
+    let _=diesel::update(tasks.find(id))
+        .set(done.eq(value))
+        .execute(connection)
+        .unwrap();
+
+    let task: models::Task = tasks
+        .find(id)
+        .first(connection)
+        .unwrap_or_else(|_| panic!("Unable to find task {}", id));
+
+    println!("The task ''{}' is marked as 'done'", task.title);  
+
+}
+
+
+
+
+
+

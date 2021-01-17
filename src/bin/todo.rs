@@ -1,5 +1,5 @@
 use std::env;
-use mytodo::db::{create_task, query_task, establish_connection, delete_by_title};
+use mytodo::db::{create_task, query_task, establish_connection, delete_by_title, update_by_id};
 
 fn help() {
     println!("subcommands:\n");
@@ -55,7 +55,7 @@ fn show_tasks(args: &[String]) {
     let conn = establish_connection();
     println!("TASKS\n-----");
     for task in query_task(&conn) {
-        println!("title -> {};   done -> {}", task.title, task.done);
+        println!("id -> {}  title -> {}   done -> {}", task.id, task.title, task.done);
     }
 }
 
@@ -84,6 +84,10 @@ fn done(args: &[String])  {
     let conn = establish_connection();
     let id = &args[0].parse::<i32>().expect("Invalid ID");
     println!("This is {}", id);
+
+    let _ = update_by_id(&conn, &id);
+    println!("The task with the id {} was marked as 'done'", id);
+
 }
 
 
