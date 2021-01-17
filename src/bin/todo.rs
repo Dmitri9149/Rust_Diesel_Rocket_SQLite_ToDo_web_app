@@ -1,5 +1,5 @@
 use std::env;
-use mytodo::db::{create_task, query_task, establish_connection, delete_by_title};
+use mytodo::db::{create_task, query_task, establish_connection, delete_by_title, update_by_id};
 
 fn help() {
     println!("subcommands:\n");
