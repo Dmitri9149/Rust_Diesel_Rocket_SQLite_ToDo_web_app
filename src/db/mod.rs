@@ -42,11 +42,14 @@ use crate::db::schema::task::title;
         return num_deleted;
 }
 
-pub fn update_by_id(connection: &SqliteConnection, id: <i32>) {
+pub fn update_by_id(connection: &SqliteConnection, id: &i32) {
 use crate::db::schema::task::done;
+use crate::db::models::Task;
     let tasks = schema::task::table;
+    let value = "done".to_string();
     let task_update=diesel::update(tasks.find(id))
-        .set(tasks.done.eq("done""))
-        .expect(&format!("Unable to find task { }", id));
+        .set(done.eq(value))
+        .get_result::<Task>(connection)
+        .expect(&format!("Unable to find task {}", id));
     println!("From DB layer: updated post {}", id);
 }
