@@ -55,7 +55,7 @@ fn show_tasks(args: &[String]) {
     let conn = establish_connection();
     println!("TASKS\n-----");
     for task in query_task(&conn) {
-        println!("title -> {};   done -> {}", task.title, task.done);
+        println!("id -> {}  title -> {}   done -> {}", task.id, task.title, task.done);
     }
 }
 
