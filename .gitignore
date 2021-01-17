@@ -13,7 +13,7 @@ Cargo.lock
 **/*.rs.bk
 ##### end of ref
 .env
-testdb.sqlite3
+*.sqlite3
 
 ###### from : https://gist.github.com/octocat/9257657
 
