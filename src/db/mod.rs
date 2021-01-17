@@ -41,3 +41,11 @@ use crate::db::schema::task::title;
         .expect("Error deleting posts");
         return num_deleted;
 }
+
+pub fn update_by_id(connection: &SqliteConnection, id: <i32>) {
+    let tasks = schema::task::table;
+    let task_update=diesel::update(tasks.find(id))
+        .set(done.eq('done'))
+        .expect(&format!("Unable to find task { }", id));
+    println!("From DB layer: updated post {}", id);
+}
