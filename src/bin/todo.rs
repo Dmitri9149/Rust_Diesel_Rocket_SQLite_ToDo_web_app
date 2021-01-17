@@ -85,7 +85,7 @@ fn done(args: &[String])  {
     let id = &args[0].parse::<i32>().expect("Invalid ID");
     println!("This is {}", id);
 
-    let task = update_by_id(&conn, &id);
+    let _ = update_by_id(&conn, &id);
     println!("The task with the id {} was deleted", id);
 
 }
